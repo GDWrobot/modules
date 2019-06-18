@@ -67,7 +67,11 @@ class weather_forecast:
     def condition(self, day):
         if self.status():
             cond_d = self.daily_forecast(day).get('cond_txt_d')
+            if '到' in cond_d:
+                cond_d = cond_d.split('到')[1]
             cond_n = self.daily_forecast(day).get('cond_txt_n')
+            if '到' in cond_n:
+                cond_n = cond_n.split('到')[1]
             if cond_d == cond_n:
                 return cond_d
             else:
